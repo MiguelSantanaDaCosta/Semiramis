@@ -231,3 +231,124 @@ Além disso, o sistema pode emitir **alertas automáticos** caso algum parâmetr
 ---
 
 ## Fluxo de Funcionamento do Sistema
+
+Sensores → ESP32 (Gateway IoT) → WiFi → Broker MQTT → Dashboard
+↓
+Atuadores
+(irrigação, iluminação,
+ventilação e armadilhas)
+
+
+Nesse fluxo:
+
+1. os sensores coletam dados ambientais  
+2. o ESP32 processa as informações  
+3. os dados são enviados via Wi-Fi  
+4. o broker MQTT distribui as mensagens  
+5. o dashboard exibe os dados ao usuário
+
+---
+
+## Benefícios da Arquitetura Proposta
+
+A arquitetura IoT adotada apresenta diversas vantagens para o sistema de automação da estufa:
+
+- monitoramento contínuo das condições ambientais  
+- automação de processos agrícolas  
+- acesso remoto às informações da estufa  
+- possibilidade de expansão do sistema com novos sensores  
+- maior eficiência na gestão da produção agrícola  
+
+Dessa forma, a utilização de tecnologias de Internet das Coisas contribui para tornar o cultivo **mais eficiente, sustentável e adaptado às demandas da agricultura moderna**.
+
+---
+
+# Layout de Posicionamento dos Sensores na Estufa (7 m × 20 m)
+
+Para garantir medições ambientais representativas e um monitoramento eficiente das condições de cultivo, os sensores do sistema IoT devem ser distribuídos estrategicamente ao longo da estufa.
+
+Considerando o modelo conceitual adotado para o projeto — **uma estufa de 7 metros de largura por 20 metros de comprimento (140 m²)** — foi definido um layout capaz de monitorar adequadamente as variações ambientais no interior da estrutura.
+
+---
+
+## Sensores de Temperatura e Umidade
+
+O monitoramento é realizado por sensores **DHT22** posicionados ao longo da estufa:
+
+- **Sensor 1:** entrada da estufa  
+- **Sensor 2:** região central  
+- **Sensor 3:** extremidade oposta  
+
+Os sensores devem ser instalados entre **1,2 m e 1,5 m de altura**, próximos à zona de crescimento das plantas.
+
+---
+
+## Sensor de Luminosidade
+
+O sensor **LDR** deve ser instalado na **região central da estufa**, em uma altura entre **2 m e 2,5 m**, evitando sombras causadas pelas plantas.
+
+---
+
+## Sensor de Nível de Água
+
+O sensor **HC-SR04** deve ser instalado **no topo do reservatório de irrigação**, medindo a distância até a superfície da água.
+
+---
+
+## Sensor de Qualidade do Ar
+
+O **MQ Gas Sensor** deve ser posicionado **na região central da estufa**, aproximadamente **1,5 m acima do solo**, permitindo detectar alterações na composição do ar.
+
+---
+
+# Atuadores do Sistema
+
+### Sistema de Irrigação
+
+A bomba de água é acionada por um **módulo de relé controlado pelo ESP32**, permitindo irrigação automática.
+
+### Sistema de Iluminação
+
+LEDs de alta intensidade instalados no teto da estufa podem ser ativados quando a luminosidade natural estiver baixa.
+
+### Sistema de Ventilação
+
+Um **motor de passo** pode abrir automaticamente janelas ou venezianas laterais para controlar a ventilação.
+
+---
+
+# Distribuição Espacial dos Sensores
+
+
+Entrada da Estufa
+┌─────────────────────────────────────┐
+│ │
+│ DHT22 Sensor Luz │
+│ │
+│ │
+│ DHT22 (Centro) │
+│ │
+│ │
+│ Sensor Gás │
+│ │
+│ │
+│ DHT22 │
+│ │
+└─────────────────────────────────────┘
+Extremidade da Estufa
+
+
+O sensor ultrassônico de nível de água permanece instalado **no reservatório de irrigação**, normalmente localizado fora da área principal de cultivo.
+
+---
+
+# Benefícios do Posicionamento Estratégico
+
+A distribuição adequada dos sensores permite:
+
+- monitorar variações microclimáticas dentro da estufa  
+- aumentar a precisão das medições ambientais  
+- melhorar a eficiência do sistema de automação  
+- reduzir riscos de falhas no controle climático  
+
+Com essa abordagem, o sistema IoT proposto torna-se capaz de fornecer **informações mais confiáveis para a tomada de decisões**, contribuindo para o aumento da produtividade agrícola e para o uso mais eficiente de recursos naturais.
