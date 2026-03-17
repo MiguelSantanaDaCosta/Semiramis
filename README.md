@@ -1,3 +1,4 @@
+
 # Sistema IoT para Automação de Estufa Agrícola
 
 ## Descrição dos Componentes do Sistema
@@ -232,20 +233,13 @@ Além disso, o sistema pode emitir **alertas automáticos** caso algum parâmetr
 
 ## Fluxo de Funcionamento do Sistema
 
-Sensores → ESP32 (Gateway IoT) → WiFi → Broker MQTT → Dashboard
-↓
-Atuadores
-(irrigação, iluminação,
-ventilação e armadilhas)
-
-
 Nesse fluxo:
 
-1. os sensores coletam dados ambientais  
-2. o ESP32 processa as informações  
-3. os dados são enviados via Wi-Fi  
-4. o broker MQTT distribui as mensagens  
-5. o dashboard exibe os dados ao usuário
+1. Os sensores coletam dados ambientais.  
+2. O ESP32 processa as informações recebidas.  
+3. Os dados são enviados via conexão Wi-Fi.  
+4. O broker MQTT recebe e distribui as mensagens.  
+5. O dashboard exibe os dados ao usuário para monitoramento.
 
 ---
 
@@ -319,36 +313,20 @@ Um **motor de passo** pode abrir automaticamente janelas ou venezianas laterais 
 
 # Distribuição Espacial dos Sensores
 
-
+```text
 Entrada da Estufa
 ┌─────────────────────────────────────┐
-│ │
-│ DHT22 Sensor Luz │
-│ │
-│ │
-│ DHT22 (Centro) │
-│ │
-│ │
-│ Sensor Gás │
-│ │
-│ │
-│ DHT22 │
-│ │
+│                                     │
+│  DHT22                Sensor de Luz │
+│                                     │
+│                                     │
+│         DHT22 (Centro)              │
+│                                     │
+│                                     │
+│  Sensor de Gás                      │
+│                                     │
+│                                     │
+│                 DHT22               │
+│                                     │
 └─────────────────────────────────────┘
 Extremidade da Estufa
-
-
-O sensor ultrassônico de nível de água permanece instalado **no reservatório de irrigação**, normalmente localizado fora da área principal de cultivo.
-
----
-
-# Benefícios do Posicionamento Estratégico
-
-A distribuição adequada dos sensores permite:
-
-- monitorar variações microclimáticas dentro da estufa  
-- aumentar a precisão das medições ambientais  
-- melhorar a eficiência do sistema de automação  
-- reduzir riscos de falhas no controle climático  
-
-Com essa abordagem, o sistema IoT proposto torna-se capaz de fornecer **informações mais confiáveis para a tomada de decisões**, contribuindo para o aumento da produtividade agrícola e para o uso mais eficiente de recursos naturais.
